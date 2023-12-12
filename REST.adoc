@@ -1,5 +1,15 @@
 = REST
 :toc:
+:toclevels: 4
+:stylesheet: ../shared/adoc-styles.css
+
+=== URL
+
+* www.example.com:8080/api/v1/users/123 is an URL
+* the URIis /api/v1/users/123
+* the HOST is www.example.com:8080
+
+
 
 === REpresentational State Transfer
 
@@ -63,3 +73,7 @@
 
 === Headers (Metadata)
 * TODO
+
+=== POST
+* usually causes a OPTIONS to be sent before
+- to check if post is allowed
