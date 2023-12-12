@@ -1,0 +1,182 @@
+= ABOUT WEB
+:toc:
+:toclevels: 4
+:stylesheet: ../shared/adoc-styles.css
+
+
+
+
+== HTTP Headers
+** Key:Value pair describing the request
+
+[source,http]
+
+GET /myphotos.html HTTP/1.1
+host : photoserver.com
+accept : text/html, application/xml
+user-agent : Mozilla/5.0
+accept-encoding : gzip
+accept-language : en-US
+
+[source,http]
+HTTP/1.1 200 OK
+server : GlassFish Server Open Source
+Edition 4.0
+content-type : text/html; charset=UTF-8
+
+
+
+=== General Headers
+
+[cols="1,4,2"]
+|===
+| Cache-Control | Specifies directives for caching mechanisms. | `no-cache`
+| Connection | Controls whether the network connection stays open or closed after the current transaction finishes. | `keep-alive`, `close`
+| Date | Represents the date and time at which the message was sent. | `Tue, 15 Nov 1994 08:12:31 GMT`
+|===
+
+=== Request Headers
+* Request headers contain more information about the resource to be fetched, or about the client requesting the resource.
+
+[cols="1,4,2"]
+|===
+| Host | Indicates the domain name of the server. | `www.example.com`
+| User-Agent | Provides information about the user agent (browser or client) initiating the request. | `Mozilla/5.0`
+| Accept | Informs the server about the MIME that the client can process. | `text/html`, `application/json`
+| Accept-Language | Specifies the preferred natural language for the response. | `en-US`
+|===
+
+=== Response Headers
+* Response headers hold additional information about the response, like its location or about the server providing it.
+
+[cols="1,4,2"]
+|===
+| Content-Type | Specifies the media type of the resource. | `text/html`, `application/json`
+| Content-Length | Indicates the size of the response body in octets (8-bit bytes). | `348`
+| Location | Used in redirections or when a new resource has been created. | `https://www.example.com`
+| Server | Provides information about the software used by the origin server. | `Apache/2.4.39 (Unix)`
+|===
+
+
+=== Entity Headers
+* Entity headers contain information about the body of the resource, like its content length or MIME type.
+
+[cols="1,4,2"]
+|===
+| Content-Encoding | Specifies the encoding transformations that have been applied to the resource. | `gzip`
+| Content-Language | Describes the natural language(s) of the intended audience for the enclosed entity. | `en-US`
+| Content-Disposition | Provides information on how the content should be presented to the user. |
+| Last-Modified | Indicates the date and time at which the origin server believes the resource was last modified. | `Tue, 15 Nov 1994 12:45:26 GMT`
+|===
+
+=== Authentication Headers
+* Authentication headers are used to identify the end user, and also to provide security by specifying the access rights of the user.
+
+[cols="1,4,2"]
+
+|===
+| WWW-Authenticate | Indicates the authentication method that should be used to access a resource. |
+| Authorization | Contains the credentials required to authenticate the client with the server. |
+|===
+
+=== Custom Headers:
+
+Custom headers are application-specific and can be defined as needed.
+They often start with "X-" to indicate that they are non-standard or experimental.
+
+{empty} +
+
+== HTTP Methods
+
+* _idempotent_ : repeatable with same outcome
+* _safe_ : do not modify resources.
+
+|===
+| Method | _idempotent_ | _safe_ | CRUD | has `Body`
+| `POST` | | | C | ✔️
+| `GET` |  ✔️  | ✔️ | R |
+| `PATCH` | ? | ? | U | ✔️
+| `PUT` |  ✔️  | | U | ✔️
+| `DELETE` |  ✔️ | | D |
+| `HEAD` |  ✔️  |  ✔️ | |
+| `OPTIONS`  | ? |  ✔️ | |
+|===
+
+=== POST
+* usually causes a OPTIONS to be sent before
+- to check if post is allowed
+
+{empty} +
+
+== HTTP Error Codes
+
+[cols="1,1,4"]
+|===
+| 100 2+| info
+| 2xx 2+| success
+| 200 | OK | GET / POST / PUT / DELETE(indirect)
+| 201 | Created | POST / PUT
+| 202 | Accepted | DELETE(direct, long ops)
+| 204 | No Content | POST / PUT / DELETE(direct)
+| 300 2+| redirection
+| 302 | Found |
+| 303 | See other |
+| 400 2+| client error
+| 500 2+| server error
+|===
+
+{empty} +
+
+== URL
+
+* www.example.com:8080/api/v1/users/123 is an URL
+* the URIis /api/v1/users/123
+* the HOST is www.example.com:8080
+
+=== URL Parameters
+
+localhost:8080/index.html?foo=1&bar=2
+
+
+
+
+== REpresentational State Transfer
+
+[cols="1,4"]
+|===
+| Representational | REST resources can be represented in many forms: XML, JSON, HTML
+| State | State of resource is more important than functions
+| Transfer | REST is concerned with transferrig data
+| Resource | Anything aceccible over the web
+|===
+
+* stateless :
+** server does not store client state / session etc.
+** server still stores data
+** each request to the server is independent
+* interoperable : any client / (at the level of MIME type)
+
+{empty} +
+
+
+== Security
+
+* OAuth2
+* JWT (JSON Web Token)
+* Basic Authentication
+
+
+
+{empty} +
+
+
+
+
+
+
+
+== MISC
+
+=== MIME Types
+* Multipurpose Internet Mail Extensions
+** e.g. `text/html`, `application/json`
