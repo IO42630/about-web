@@ -65,6 +65,8 @@
 | 202 | Accepted | DELETE(direct, long ops)
 | 204 | No Content | POST / PUT / DELETE(direct)
 | 300 2+| redirection
+| 302 | Found |
+| 303 | See other |
 | 400 2+| client error
 | 500 2+| server error
 |===
@@ -73,6 +75,11 @@
 
 === Headers (Metadata)
 * TODO
+
+
+=== URL Parameters
+
+localhost:8080/index.html?foo=1&bar=2
 
 === POST
 * usually causes a OPTIONS to be sent before
